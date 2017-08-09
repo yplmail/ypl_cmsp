@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>草莓视频</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="apple-itunes-app" content="app-id=id1226252296" />    
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <script type="text/javascript" src="../../lib/reset.js"></script>   
+    <link href="../../favicon.ico" rel="shortcut icon">
+    <link href="../../common/main.css" rel="stylesheet">
+    <link href="./classfiy.css" rel="stylesheet">
+</head>
+<body>
+    <div class="classfiy-warp">
+        <div class="header-donwload">
+            <div flex="dir:left box:justify cross:center">
+                  <img src="../../images/download_logo.png" />
+                  <div class="download-desprition">
+                      <h1>草莓视频</h1>
+                      <p >消费心得分享平台</p>
+                  </div>
+                  <a href="https://m.springrass.com/multipage/download.html">下载APP</a>          
+            </div>
+        </div>
+
+        <div class="classfiy-header">
+            <div class="header-content">
+              <h1 id="classfiy"></h1>
+              <p>该分类共有<span id="videocount">0</span>条视频</p>
+              <div>
+	              <a class="publish">投稿</a>
+              </div>
+            </div>
+        </div>
+
+        <div class="classfiy-videolist">
+            <ul class="videolist-outer">
+                <script id="classfiyTpl" type="text/template">
+                <%_.each(obj, function(item){%>
+                <li flex="dir:left" class="classfiyLi">
+                <a href="../video/video.html?publishId=<%=item.publishId%>&videoId=<%=item.videoId%>"></a>
+                <div class="video-cover">
+                <img src="<%=item.coverUrl%>">
+                <span class="duration"><%= common.minutes(item.duration) %></span>
+                </div>
+
+                <div class="video-detail" flex="dir:top main:justify">
+                <h1><%= item.title.length > 22 ? item.title.substr(0,22) + '...' : item.title %></h1>
+                <p>
+                <span class="ellipsis" style="max-width:2rem"><%=item.channelName || '草莓看客' %></span>
+                <span style="margin:0 3px">|</span>
+                <span><%=common.getDateDiff(item.publishDt)%></span>
+                </p>
+                <p>
+                <span><%=item.pariseCount%>人赞</span>
+                <span style="margin:0 3px">|</span>
+                <span><%=item.talkCount%>条评论</span>
+                </p>
+                </div>
+                </li>  
+                <% }); %>          
+                </script>  
+
+                <script id="videoEmptyTpl" type="text/template">
+                    <div style="line-height:2rem;height:2rem;text-align:center">暂无相关视频</div>
+                </script>   
+            </ul>
+
+            <div class="scroll-loading">
+                <div class="loading-box">
+                <div class="loading-rond">
+                <div class="rond"></div>
+                </div>
+                <div class="loading-circle">
+                <p ref="loadingtips">下拉加载</p>
+                </div>
+                </div>
+            </div>             
+        </div>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../../lib/main.js"></script>
+    <script>
+    seajs.use('./classfiy.js');
+    </script>   
+</body>
+</html>

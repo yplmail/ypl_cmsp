@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>邀请有礼</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="apple-itunes-app" content="app-id=id1226252296" />    
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <script type="text/javascript" src="../../common/intercept.js"></script>
+    <script type="text/javascript" src="../../lib/reset.js"></script>   
+    <link href="../../favicon.ico" rel="shortcut icon">
+    <link href="../../common/main.css" rel="stylesheet">
+    <link href="./invite.css" rel="stylesheet">
+</head>
+<body>
+    <div class="share-warp">
+        <div class="share-header">分享请长按图片，并发送给微信好友</div>
+        <div class="share-content">
+            <img id="inviteImg" >
+        </div>
+        <div class="share-invite">已邀请成功<span id="inviteCount">0</span>位好友</div>
+        <div class="share-rule">
+            <h1>规则说明</h1>
+            <div>
+                <p>
+                    1、好友在邀请页面输入手机号码后，并在1日内成功通过App使用手机号注册，并完整观看一条视频后，你与好友将同时获得红包。
+                </p>
+
+                <p>
+                    2、微信邀请时，二维码有效期为29天。29天后需重新在该页面发起分享，才能激活新的有效二维码。                  
+                </p>
+                
+                <p>
+                    3、邀请成功后，您与好友将分别获得0.5元红包。红包当日奖励金额上限为1000元。
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="share-error">
+       <p>暂时无法邀请</p>
+       <p>只有通过APP进行手机号注册的用户,才能发起邀请哦~</p>
+       <p><a  href="https://m.springrass.com/multipage/download.html">下载APP</a></p>
+    </div>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../../lib/main.js"></script>
+    <script>
+    seajs.use('./invite.js');
+    </script>   
+</body>
+</html>

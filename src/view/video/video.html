@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <title>草莓视频</title>
+	    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	    <meta name="format-detection" content="telephone=no, email=no" />
+	    <link href="../favicon.ico" rel="shortcut icon">
+	    <script type="text/javascript" src="../../common/intercept.js"></script>
+	    <script type="text/javascript" src="../../lib/reset.js"></script>  
+	    <link href="../../common/main.css" rel="stylesheet">
+	    <link href="./player.css" rel="stylesheet">
+	    <link href="./video.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="video-wrap">
+	        <div class="header-donwload">
+		        <div flex="dir:left box:justify cross:center">
+			          <img src="../../images/download_logo.png" />
+			          <div class="download-desprition">
+			              <h1>草莓视频</h1>
+			              <p >消费心得分享平台</p>
+			          </div>
+			          <a href="https://m.springrass.com/multipage/download.html">下载APP</a>	        
+		        </div>
+	        </div>
+
+			<div class="video-player">
+	            <div id="player" class="prism-player"></div>
+	            <div id="cover"  class="player-cover">
+	            	<img src="../../images/play_btn.png" />
+	            </div>
+	            <div class="video-invalid">
+	            	<span>该视频已经被下架！！！</span>
+	            </div>					
+			</div>
+
+            <div class="scroll-container">
+                <div class="scroll-outer">
+                    <div class="scroll-inner">
+                        <div class="product-info">
+	                        <a id="productLink">产品详情</a>
+                        </div>
+						<div class="video-synopsis" flex="box:last">
+							<h1 class="synopsis"></h1>
+							<p  class="synopsis-btn">简介</p> 								
+						</div>
+
+						<div class="video-playcount"></div>	
+
+						<div class="video-detail" flex="box:mean">
+							<div class="heart-outer">
+								<img src="../../images/heart_hollow.png">
+								<span id="pariseCount">0</span>
+							</div>
+							<div class="talk-outer">
+								<img src="../../images/comment.png">
+								<span id="talkCount">0</span>
+							</div>
+							<div class="share-outer">
+								<img src="../../images/share.png">
+								<span>分享</span>
+							</div>
+							<div class="winner-outer" style="display: none">
+								<img src="../../images/winning.png">
+								<span>红包榜</span>
+							</div>												
+						</div>
+
+						<div class="video-property">
+							<ul id="propertyUl">
+							</ul>
+						</div>			
+
+						<div class="video-channel" flex="box:justify cross:center">
+							<div class="channel-header" flex="cross:center">
+								<img id="channelAvatar" src="../../images/header_img.png">
+							</div>
+							<div class="channel-name" flex="dir:top box:mean main:center">
+								<h3 id="channelName"></h3>
+								<p  id="channelfans" flex="cross:bottom"></p>
+							</div>
+							<div class="channel-attention" flex="cross:center">
+								<span id="channelFollow">关注</span>
+							</div>
+						</div>
+
+						<div class="video-related">
+							<h1>相关推荐</h1>
+							<div class="related-iscroll">
+								<ul id="relatedUl"> 
+								    <script id="relatedTpl" type="text/template">
+			                            <%_.each(obj, function(item){%>
+											<li>
+											    <a href="./video.html?publishId=<%=item.publishId%>&videoId=<%=item.videoId%>">
+													<div>
+														<img  class="cover" src="<%=common.joinImageUrl(item.coverUrl)%>">
+														<span class="duration"><%=item.duration%></span>
+													</div>
+													<div class="title ellipsis"><%=item.title%></div>
+												</a>
+											</li>	                         
+			                            <% }); %>					    
+								    </script>
+								    <script id="relatedEmptyTpl" type="text/template">
+                                        <div style="text-align:center;height:2rem;line-height:2rem">暂无相关推荐</div>				    
+								    </script>  								           										
+								</ul>
+							</div>
+						</div>
+
+						<div class="video-comment">
+							<h1 id="commentAllCount">评论</h1>
+							<ul id="commentUl" class="comment-list">
+								<script id="commentTpl" type="text/template">
+								    <%_.each(obj, function(item){%>
+										<li flex="dir:left box:first">
+											<div class="comment-header">
+												<img src="<%=common.joinImageUrl(item.avatar)%>" />
+											</div>
+											<div class="comment-content" flex="dir:top">
+												<h3><%=item.nickName  || '草莓看客'%></h3>
+												<p><%=item.content%></p>
+												<span><%=common.getDateDiff(item.createDt)%></span>
+												<% if(item.replyList && item.replyList.length > 0 ){%>
+												   <ul class="comment-child">
+											          <%_.each(item.replyList, function(child){%>
+															<li flex="dir:left box:first">
+																<div class="child-header">
+																	<img src="<%=common.joinImageUrl(child.avatar)%>" />
+																</div>
+																<div class="child-content">
+																	<h3><%=child.nickName || '草莓看客'%></h3>
+																	<p><%=child.content%></p>
+																	<span><%=common.getDateDiff(child.createDt)%></span>
+																</div>
+															</li>
+											          <% }); %>														
+												   </ul>
+												   <% if(item.replyCount > 2){%>
+													   <div class="comment-more">共<%=item.replyCount%>条回复</div>
+												   <%}%>
+												<% }%>
+											</div>
+										</li>
+									<% }); %>		
+								</script> 
+								<script id="commentEmptyTpl" type="text/template">
+									<div style="text-align:center;height:2rem;line-height:2rem">
+										<span>暂无相关评论</span>
+									</div>				    
+								</script>  
+							</ul>
+						</div>
+						<div class="comment-lastmore">
+							<span>打开APP查看更多精彩评论</span>
+						</div>         	                    	
+                    </div>
+                </div>
+            </div>
+
+			<div class="video-packet">
+				<div class="packet-content">
+					<p class="packet-close"></p>
+					<p class="packet-wish">恭喜你获得</p>
+					<p class="packet-amount"></p>
+					<p class="packet-button">
+						<a id="openBtn">去App查看</a>
+					</p>
+					<p class="packet-share">
+						<a id="inviteBtn">邀请好友来抢</a>
+					</p>
+				</div>
+			</div>
+
+			<div class="mask">
+				<div class="content"></div>
+			</div>              
+		</div>
+		<script id="synopsisTpl" type="text/template">
+			<div class="layerup-inner">
+				<div class="layerup-title">
+					<div flex="box:last cross:center">
+						<h1><span class="layerup-header ellipsis"><%=obj.title%></span></h1>
+						<img class="layerup-close" src="../../images/layerup_close.png">
+					</div>
+					<p class="layerup-time">
+						<span>2013.05.07</span>
+						<span><%=obj.channelName%></span>
+					</p>
+				</div>
+				<div class="layerup-synopsis">
+					<p><%=obj.publishVideoDesc%><%=obj.publishVideoDesc%><%=obj.publishVideoDesc%><%=obj.publishVideoDesc%></p>
+				</div>
+			</div>			
+		</script> 
+		<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/1.5.7/prism-min.js"></script>
+		<script type="text/javascript" src="../../lib/main.max.js"></script>  
+		<script>
+		seajs.use('./video');
+		</script> 		         
+	</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>草莓视频</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="apple-itunes-app" content="app-id=1226252296" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <script type="text/javascript" src="../../lib/reset.js"></script>  
+    <link href="../../../favicon.ico" rel="shortcut icon">
+    <link href="../../common/main.css" rel="stylesheet">
+    <link href="./channel.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="channel-wrapper">
+        <div class="header-donwload">
+            <div flex="dir:left box:justify cross:center">
+                <img src="../../images/download_logo.png" />
+                <div class="download-desprition">
+                <h1>草莓视频</h1>
+                <p >消费心得分享平台</p>
+                </div>
+                <a href="https://m.springrass.com/multipage/download.html">下载APP</a>          
+            </div>
+        </div>
+        
+        <div class="channel-header">
+            <div class="header-outer" flex="dir:left box:first">
+                <div class="img-outer"><img id="channelAvatar" src="../../images/person_img.png"></div>
+                <div class="des-outer" flex="dir:top box:mean main:center">
+                    <h1 flex="cross:center" id="nickName"></h1>
+                    <p id="introduction"></p>
+                </div>
+            </div>
+            <div class="channel-detail" flex="dir:left box:mean main:center">
+                <div flex="dir:top box:mean">
+                    <p flex="cross:bottom" id="fans">0</p>
+                    <p flex="cross:top">粉丝</p>
+                </div>
+                <div flex="dir:top box:mean">
+                    <p flex="cross:bottom" id="praise">0</p>
+                    <p flex="cross:top">获赞</p>
+                </div>
+                <div flex="dir:top box:mean">
+                    <p flex="cross:bottom" id="attention">0</p>
+                    <p flex="cross:top">关注</p>
+                </div>
+                <div flex="cross:center main:center">
+                    <p class="edit-channel">关注</p>
+                </div>
+            </div>
+        </div>
+        <div class="channel-list">
+            <div class="channel-rows">
+            	<ul class="scroll-outer">
+                    <script id="videoListTpl" type="text/template">
+                        <%_.each(obj, function(item){%>
+			                <li>
+				                <a class="row-content" href="../video/video.html?publishId=<%=item.publishId%>&videoId=<%=item.videoId%>">
+					                <img src="<%=common.joinImageUrl(item.coverUrl)%>">
+					                <span class="duration"><%= common.minutes(item.duration)%></span>
+				                </a>			                
+				                <div class="row-footer" flex="dir:top box:mean">
+					                <h1 flex="cross:center"><span class="ellipsis"><%=item.title%></span></h1>
+					                <p class="detail">
+						                <span><%=item.pariseCount || 0%>条点赞</span>
+						                <i>|</i><span><%=item.talkCount || 0%>条评论</span>
+						                <i>|</i><span><%=common.getDateDiff(item.publishDt)%></span>
+					                </p>
+				                </div>
+			                </li>          		                          
+                        <% }); %>
+                    </script>
+                    <script id="emptyTpl" type="text/template">
+                        <div class="channelvideo-empty">
+                            <img src="../../images/no_video.png">
+	                        <p class="tips_1">频道暂时还没有相关视频</p>
+                        </div>
+                    </script>                                	    
+                </ul>
+		        <div class="scroll-loading">
+		            <div class="loading-box">
+		                <div class="loading-rond">
+		                    <div class="rond"></div>
+		                </div>
+		                <div class="loading-circle">
+		                    <p ref="loadingtips">下拉加载</p>
+		                </div>
+		            </div>
+		        </div>            	
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../../lib/main.max.js"></script>     
+    <script>
+    seajs.use('./channel.js');
+    </script>  
+</body>
+
+</html>

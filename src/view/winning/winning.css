@@ -1,0 +1,122 @@
+.winning-inner{
+	position: relative;
+	background-color: #eee;
+}
+
+.winning-header{
+	position: relative;
+	width:7.5rem;
+	height:2.2rem;
+	background: url(../../images/winning_header.png);
+	background-size: cover;
+}
+
+.winning-header img{
+	position: absolute;
+	left:50%;
+	top:1.6rem;
+	width:1.2rem;
+	height:1.2rem;
+	margin-left:-0.6rem; 
+}
+
+.winning-nickname{
+	text-align: center;
+    margin-top:.7rem;
+    font-size: 17px;
+    color:#333;
+}
+
+.winning-amount{
+    text-align: center;
+    font-size: 36px;
+    color:#333;
+    margin-top: .3rem;
+}
+
+.winning-amount p:first-child{
+	font-size: 36px;
+	color:#333;
+	font-weight: 700;
+}
+
+.winning-amount p:first-child:before{
+    content: '￥';
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.winning-amount p:last-child{
+	font-size: 14px;
+	color:#285db4;
+}
+
+.winning-button{
+	text-align: center;
+	margin: .5rem 0;
+}
+
+.winning-button a{
+	display: inline-block;
+	width:5.26rem;
+	height:.8rem;
+	line-height: .8rem;
+	text-align: center;
+	font-size: 17px;
+	border-radius: 5px;
+	border:1px solid #ce1035;
+}
+
+.winning-button a:first-child{
+	color:#ce1035;
+}
+
+.winning-button a:last-child{
+	margin-top:15px;
+	background-color: #ce1035;
+	color:#fff;
+}
+
+.winning-split img{
+	height:.7rem;
+	width:100%;
+}
+
+.winning-record h1{
+	width:6.9rem;
+	margin:0 auto;
+	font-size: 14px;
+	color:#333;
+	line-height: .8rem;
+	height: .8rem;
+	border-bottom: 1px solid #e1e1e1;
+}
+.winning-record ul{
+	width:6.9rem;
+	margin:0 auto;	
+}
+.winning-record li{
+	height:1.22rem;
+	border-bottom: 1px solid #e1e1e1;
+}
+
+.winning-record li > div{
+	height:.75rem;
+}
+
+.winning-record li img{
+	height:.75rem;
+	width:.75rem;
+}
+
+.winning-record .nickname{
+   padding-left:10px;
+   font-size: 14px;
+   color:#333;
+}
+
+.winning-record .time{
+   padding-left:10px;
+   font-size: 11px;
+   color:#999;
+}

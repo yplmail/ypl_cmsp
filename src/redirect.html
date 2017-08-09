@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>草莓视界</title>
+</head>
+
+<body>
+    <script>
+    
+    var data = {};
+
+    var appId = 'wx69d84247bc78b780';
+
+    if (location.host == "m.tes.springrass.com") {
+
+        appId = 'wx5afab085fbed82d6';
+
+    }else if(location.host == "prem.springrass.com"){
+
+        appId = 'wx80456a4a6986fc80';
+    }
+
+    var arr = location.search.substring(1).split('&');
+
+    for (var i = 0; i < arr.length; i++) {
+        var pos = arr[i].indexOf('=');
+        if (pos === -1) {
+            continue;
+        }
+        data[arr[i].substring(0, pos)] = decodeURIComponent(arr[i].substring(pos + 1));
+    }
+
+    if (data.code) {
+
+        var arr = [];
+    
+        var url = location.protocol + '//' + location.host + data.pathname;
+
+        delete data['pathname'];
+
+        for(var r in data){
+            arr.push(r + '=' + data[r]);            
+        }
+
+        location =  url + '?' + arr.join("&");     
+
+    } else {
+
+        var arr = [];
+
+        for(var r in data){
+            arr.push(r + '=' + data[r]);            
+        }
+
+        var url = encodeURIComponent(location.protocol + '//' + location.host + '/new/redirect.html?' + arr.join('&'));
+
+        var scope = data.scope || 'snsapi_base';
+
+        location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appId + "&redirect_uri=" + url + "&response_type=code&scope=" + scope + "&state=chuncao#wechat_redirect";
+    }
+    </script>
+</body>
+
+</html>

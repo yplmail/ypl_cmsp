@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>草莓视频</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="apple-itunes-app" content="app-id=1226252296" />    
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <script type="text/javascript" src="../../lib/reset.js"></script>  
+    <link href="../../common/main.css" rel="stylesheet">
+    <link href="./recommend.css" rel="stylesheet">
+</head>
+<body>
+    <div class="recommend-wrap">
+        <div class="header-donwload">
+            <div flex="dir:left box:justify cross:center">
+                <img src="../../images/download_logo.png" />
+                <div class="download-desprition">
+                <h1>草莓视频</h1>
+                <p >消费心得分享平台</p>
+                </div>
+                <a href="https://m.springrass.com/multipage/download.html">下载APP</a>          
+            </div>
+        </div>
+          
+         <div class="recommend-detail">
+              <img id="headerImg" src="../../images/header_img.png">
+              <h1 class="nikename"></h1>
+              <p class="des">邀请你一起看<span class="appname">草莓视频</span><br>观看视频还可以领红包哦～</p>
+              <p><input class="mobile" type="tel" placeholder="请输入手机号" maxlength="11"></p>
+              <p class="error"><span class="tip"></span></p>
+              <p><a class="button">领取红包</a></p>
+         </div>
+         <div class="recommend-list">
+              <h1>分享达人排行榜</h1>
+              <ul id="recommendListUi">
+                <script id="recommendListTpl" type="text/template">
+                    <%_.each(obj, function(item){%>
+                        <li flex="dir:dir cross:center box:justify">
+                            <img src="<%= common.joinImageUrl(item.avatar)%>">
+                            <div><span><%= item.nickName || '草莓看客'%></span></div>
+                            <p><%= item.amount / 100 %>元</p>
+                        </li>                                         
+                    <% }); %>                       
+                </script> 
+              </ul>
+         </div>
+         <div class="recommend-rewardouter">
+            <div class="recommend-reward">
+               <p class="reward-tip">去APP看视频</br>就能领取红包哦~</p>
+               <a class="reward-btn">下载APP</a>
+               <img class="reward-close" src="../../images/close.png">
+            </div>
+         </div>
+
+    </div>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../../lib/main.js"></script>
+    <script>
+        seajs.use('./recommend.js');
+    </script>       
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>草莓视频</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="apple-itunes-app" content="app-id=1226252296" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <script type="text/javascript" src="../../common/intercept.js"></script>
+    <script type="text/javascript" src="../../lib/reset.js"></script>  
+    <link href="../../../favicon.ico" rel="shortcut icon">
+    <link href="../../common/main.css" rel="stylesheet">
+    <link href="./discovery.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="discovery-wrap">
+      <div class="discovery-scroll">
+            <div class="header-donwload">
+                <div flex="dir:left box:justify cross:center">
+                      <img src="../../images/download_logo.png" />
+                      <div class="download-desprition">
+                          <h1>草莓视频</h1>
+                          <p >消费心得分享平台</p>
+                      </div>
+                      <a href="https://m.springrass.com/multipage/download.html">下载APP</a>          
+                </div>
+            </div>
+
+            <div class="hot-classfiy">
+                <h1>热门分类</h1>
+                <div class="classfiy-scroll">
+                    <ul id="classfiyUl">                                    
+                        <script id="classfiyTpl" type="text/template">
+                            <%_.each(obj, function(item){%>
+                                <li>
+                                    <a href="../hot/classfiy.html?classfiyId=<%=item.categoryId%>&classfiy=<%=item.categoryName%>">
+                                        <img src="<%=item.categoryAvatar || '../../images/classfiy_default.png'%>">
+                                        <span><%=item.categoryName%></span>
+                                    </a>
+                                </li>                            
+                            <% }); %>
+                        </script>                         
+                    </ul>                        
+                </div>
+            </div>
+
+            <div class="hot-tag">
+                <h1>热门标签</h1>
+                <div class="tag-scroll">
+                    <ul id="tagUl">
+                        <script id="tagTpl" type="text/template">
+                            <%_.each(obj, function(item){%>
+                                <li><a href="../hot/tag.html?tagId=<%=item.tagId%>">#&nbsp;<%=item.tagName%></a></li>                           
+                            <% }); %>
+                        </script>  
+                    </ul>                
+                </div>               
+            </div>
+
+            <div class="hot-channel">
+                <h1>热门频道</h1>
+                <div class="channel-scroll">
+                    <ul id="channelUl">
+                        <script id="channelTpl" type="text/template">
+                            <%_.each(obj, function(item){%>
+                                <li class="clearfix">
+                                    <div class="channel-header">
+                                        <img src="<%=common.joinImageUrl(item.channelAvatar)%>">
+                                    </div>
+                                    <div class="channel-detail">
+                                        <h3 class="channel-name ellipsis"><%=item.channelName || '草莓看客'%></h3>
+                                        <p class="channel-fans"><%=item.channelFlowCount || 0%>人关注</p>
+                                    </div>
+                                </li>                        
+                            <% }); %>
+                        </script>                                                                                                                 
+                    </ul>                                        
+                </div>               
+            </div>
+
+            <div class="hot-adv">
+                <div class="adv-scroll">
+                      <ul id="advUl">
+                        <script id="advTpl" type="text/template" style="display:none">
+                            <%_.each(obj, function(item){%>
+                                <li>
+                                    <a href="<%= item.bannerUrl ? item.bannerUrl.intentUrl : '' %>">
+                                        <img src="<%=item.coverUrl%>">
+                                    </a>
+                                </li>                         
+                            <% }); %>
+                        </script>                          
+                      </ul>               
+                </div>      
+            </div>
+
+            <div class="hot-video">
+                <h1>热门视频</h1>
+                <div class="video-scroll">
+                    <ul id="videoUl">
+                        <script id="videoTpl" type="text/template">
+                          <%_.each(obj, function(item){%>
+                              <li>
+                                <a class="video-cover" href="../video/video.html?publishId=<%=item.publishId%>&videoId=<%=item.videoId%>">
+                                    <img src="<%=item.coverUrl%>">
+                                    <span><%= common.minutes(item.duration) %></span>
+                                    <div class="video-channel">
+                                        <div class="videochannel-header">
+                                            <img src="<%=common.joinImageUrl(item.channelAvatar)%>">
+                                        </div>
+                                        <div class="videochannel-detail">
+                                          <p class="ellipsis"><%=item.channelName  || '草莓看客'%></p>
+                                          <p><%=common.getDateDiff(item.publishDt)%></p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="video-footer">
+                                    <h2 class="ellipsis"><%=item.title%></h2>
+                                    <p>
+                                        <span><%=item.pariseCount+'人喜欢'%></span>
+                                        <span class="split">|</span>
+                                        <span><%=item.talkCount+'条评论'%></span>
+                                    </p>
+                                </div>
+                              </li>                        
+                          <% }); %>
+                        </script>
+
+                        <script id="videoEmptyTpl" type="text/template">
+                            <div style="line-height:3rem;height:3rem;text-align:center">暂无相关视频</div>
+                        </script>                             
+                    </ul>
+                    <div class="scroll-loading">
+                        <div class="loading-box">
+                            <div class="loading-rond">
+                                <div class="rond"></div>
+                            </div>
+                            <div class="loading-circle">
+                                <p ref="loadingtips">下拉加载</p>
+                            </div>
+                        </div>
+                    </div>                                      
+                </div>                   
+            </div>            
+      </div>      
+  </div>            
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../../lib/main.max.js"></script>     
+    <script>
+    seajs.use('./discovery.js');
+    </script>    
+</body>
+</html>

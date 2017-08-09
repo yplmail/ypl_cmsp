@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>草莓视频</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="apple-itunes-app" content="app-id=id1226252296" />    
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <script type="text/javascript" src="../../lib/reset.js"></script>   
+    <link href="../../favicon.ico" rel="shortcut icon">
+    <link href="../../common/main.css" rel="stylesheet">
+    <link href="./invite.css" rel="stylesheet">
+</head>
+<body>
+    <div class="share-warp" style="background-color: #fff">
+        <div class="share-content" style="padding-top:1rem">
+            <img id="inviteImg">
+        </div>
+    </div>
+    <script>
+	    function getsearch() {
+	        var arr = location.search.substring(1).split('&');
+	        var data = {};
+	        for (var i = 0; i < arr.length; i++) {
+	            var pos = arr[i].indexOf('=');
+	            if (pos === -1) {
+	                continue;
+	            }
+	            data[arr[i].substring(0, pos)] = decodeURIComponent(arr[i].substring(pos + 1));
+	        }
+	        return data;
+	    }
+
+	    document.getElementById('inviteImg').setAttribute('src',decodeURIComponent(getsearch().img));        
+    </script>    
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> 
+</body>
+</html>
